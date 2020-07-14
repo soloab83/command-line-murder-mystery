@@ -1,0 +1,732 @@
+➜  mystery git:(master) ✗ cd ..
+➜  command-line-murder-mystery git:(master) ✗ cat hint7
+In order to actually get information about vehicles that might match our description,
+we need to get multiple lines AROUND each match.  We can use the -A, -B, or -C option with grep:
+
+	grep -A 5 "L337" mystery/vehicles
+
+This will match the license plates that contain "L337" and, for each match, show us the five lines AFTER it.%                                                   ➜  command-line-murder-mystery git:(master) ✗ grep -A 5 "L337" mystery/vehicles
+License Plate L337ZR9
+Make: Honda
+Color: Red
+Owner: Katie Park
+Height: 6'2"
+Weight: 189 lbs
+--
+License Plate L337P89
+Make: Honda
+Color: Teal
+Owner: Mike Bostock
+Height: 6'4"
+Weight: 173 lbs
+--
+License Plate L337GX9
+Make: Mazda
+Color: Orange
+Owner: John Keefe
+Height: 6'4"
+Weight: 185 lbs
+--
+License Plate L337QE9
+Make: Honda
+Color: Blue
+Owner: Erika Owens
+Height: 6'5"
+Weight: 220 lbs
+--
+License Plate L337GB9
+Make: Toyota
+Color: Blue
+Owner: Matt Waite
+Height: 6'1"
+Weight: 190 lbs
+--
+License Plate L337OI9
+Make: Jaguar
+Color: Blue
+Owner: Brian Boyer
+Height: 6'6"
+Weight: 201 lbs
+--
+License Plate L337X19
+Make: Fiat
+Color: Blue
+Owner: Al Shaw
+Height: 6'5"
+Weight: 240 lbs
+--
+License Plate L337539
+Make: Honda
+Color: Blue
+Owner: Aron Pilhofer
+Height: 5'3"
+Weight: 198 lbs
+--
+License Plate L3373U9
+Make: Ford
+Color: Blue
+Owner: Miranda Mulligan
+Height: 6'6"
+Weight: 156 lbs
+--
+License Plate L337369
+Make: Honda
+Color: Blue
+Owner: Heather Billings
+Height: 5'2"
+Weight: 244 lbs
+--
+License Plate L337DV9
+Make: Honda
+Color: Blue
+Owner: Joe Germuska
+Height: 6'2"
+Weight: 164 lbs
+--
+License Plate L3375A9
+Make: Honda
+Color: Blue
+Owner: Jeremy Bowers
+Height: 6'1"
+Weight: 204 lbs
+--
+License Plate L337WR9
+Make: Honda
+Color: Blue
+Owner: Jacqui Maher
+Height: 6'2"
+Weight: 130 lbs
+➜  command-line-murder-mystery git:(master) ✗ cat hint8
+To see who was a member of several different groups, you can combine their membership lists into one and search against that.
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+
+If you only want to see the number of matches, you can use grep's -c option (the c must be lowercase):
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep -c "John Smith"
+
+Or you can pipe the result to 'wc -l':
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l%  ➜  command-line-murder-mystery git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l
+cat: Fitness_Galaxy: No such file or directory
+cat: AAA: No such file or directory
+cat: United_MileagePlus: No such file or directory
+       0
+➜  command-line-murder-mystery git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+cat: Fitness_Galaxy: No such file or directory
+cat: AAA: No such file or directory
+cat: United_MileagePlus: No such file or directory
+➜  command-line-murder-mystery git:(master) ✗ cd mystery
+➜  mystery git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+cat: Fitness_Galaxy: No such file or directory
+cat: AAA: No such file or directory
+cat: United_MileagePlus: No such file or directory
+➜  mystery git:(master) ✗ ls
+crimescene  interviews  memberships people      streets     vehicles
+➜  mystery git:(master) ✗ cd memberships
+➜  memberships git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+➜  memberships git:(master) ✗ ls
+1.txt                   Fitness_Galaxy          United_MileagePlus
+2.txt                   Museum_of_Bash_History  delta.txt
+AAA                     REI                     library.txt
+AAdvantage              Rotary_Club             museum.txt
+Costco                  TCSU_Alumni_Association newfile.txt
+Delta_SkyMiles          Terminal_City_Library
+➜  memberships git:(master) ✗ cd ..
+➜  mystery git:(master) ✗ cd memberships
+➜  memberships git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l
+       0
+➜  memberships git:(master) ✗ cd ..
+➜  mystery git:(master) ✗ cd ..
+➜  command-line-murder-mystery git:(master) ✗ ls
+LICENSE            cheatsheet.md.save hint3              hint7
+LICENSE.txt        cheatsheet.pdf     hint4              hint8
+README.md          hint1              hint5              instructions
+cheatsheet.md      hint2              hint6              mystery
+➜  command-line-murder-mystery git:(master) ✗ cat hint8
+To see who was a member of several different groups, you can combine their membership lists into one and search against that.
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+
+If you only want to see the number of matches, you can use grep's -c option (the c must be lowercase):
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep -c "John Smith"
+
+Or you can pipe the result to 'wc -l':
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l%  ➜  command-line-murder-mystery git:(master) ✗ cd mystery
+➜  mystery git:(master) ✗ ls
+crimescene  interviews  memberships people      streets     vehicles
+➜  mystery git:(master) ✗ cd memberships
+➜  memberships git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep -c "John Smith"
+0
+➜  memberships git:(master) ✗ cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l
+       0
+➜  memberships git:(master) ✗ ls
+1.txt                   Fitness_Galaxy          United_MileagePlus
+2.txt                   Museum_of_Bash_History  delta.txt
+AAA                     REI                     library.txt
+AAdvantage              Rotary_Club             museum.txt
+Costco                  TCSU_Alumni_Association newfile.txt
+Delta_SkyMiles          Terminal_City_Library
+➜  memberships git:(master) ✗ cd ..
+➜  mystery git:(master) ✗ cd ..
+➜  command-line-murder-mystery git:(master) ✗ cat hint7
+In order to actually get information about vehicles that might match our description,
+we need to get multiple lines AROUND each match.  We can use the -A, -B, or -C option with grep:
+
+	grep -A 5 "L337" mystery/vehicles
+
+This will match the license plates that contain "L337" and, for each match, show us the five lines AFTER it.%                                                 ➜  command-line-murder-mystery git:(master) ✗ grep -A 5 "L337" mystery/vehicles
+
+License Plate L337ZR9
+Make: Honda
+Color: Red
+Owner: Katie Park
+Height: 6'2"
+Weight: 189 lbs
+--
+License Plate L337P89
+Make: Honda
+Color: Teal
+Owner: Mike Bostock
+Height: 6'4"
+Weight: 173 lbs
+--
+License Plate L337GX9
+Make: Mazda
+Color: Orange
+Owner: John Keefe
+Height: 6'4"
+Weight: 185 lbs
+--
+License Plate L337QE9
+Make: Honda
+Color: Blue
+Owner: Erika Owens
+Height: 6'5"
+Weight: 220 lbs
+--
+License Plate L337GB9
+Make: Toyota
+Color: Blue
+Owner: Matt Waite
+Height: 6'1"
+Weight: 190 lbs
+--
+License Plate L337OI9
+Make: Jaguar
+Color: Blue
+Owner: Brian Boyer
+Height: 6'6"
+Weight: 201 lbs
+--
+License Plate L337X19
+Make: Fiat
+Color: Blue
+Owner: Al Shaw
+Height: 6'5"
+Weight: 240 lbs
+--
+License Plate L337539
+Make: Honda
+Color: Blue
+Owner: Aron Pilhofer
+Height: 5'3"
+Weight: 198 lbs
+--
+License Plate L3373U9
+Make: Ford
+Color: Blue
+Owner: Miranda Mulligan
+Height: 6'6"
+Weight: 156 lbs
+--
+License Plate L337369
+Make: Honda
+Color: Blue
+Owner: Heather Billings
+Height: 5'2"
+Weight: 244 lbs
+--
+License Plate L337DV9
+Make: Honda
+Color: Blue
+Owner: Joe Germuska
+Height: 6'2"
+Weight: 164 lbs
+--
+License Plate L3375A9
+Make: Honda
+Color: Blue
+Owner: Jeremy Bowers
+Height: 6'1"
+Weight: 204 lbs
+--
+License Plate L337WR9
+Make: Honda
+Color: Blue
+Owner: Jacqui Maher
+Height: 6'2"
+Weight: 130 lbs
+➜  command-line-murder-mystery git:(master) ✗ cat hint8
+To see who was a member of several different groups, you can combine their membership lists into one and search against that.
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+
+If you only want to see the number of matches, you can use grep's -c option (the c must be lowercase):
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep -c "John Smith"
+
+Or you can pipe the result to 'wc -l':
+
+	cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l% ➜  command-line-murder-mystery git:(master) ✗ run history
+zsh: command not found: run
+➜  command-line-murder-mystery git:(master) ✗ ~
+➜  ~ run history
+zsh: command not found: run
+➜  ~ history
+    1  ls
+    2  cd
+    3  mkdir
+    4  mkdir Portfolio
+    5  /usr/local/bin/node ; exit;
+    6  javascript-basics
+    7  javascript-basics $
+    8  Javascript-Basics
+    9  /usr/local/bin/node ; exit;
+   10  Javascript-Basics $node.js
+   11  Javascript-Basics $node index.js
+   12  $node.js
+   13  javascript-basics
+   14  /Users/solomon/Desktop/Javscript-Basics
+   15  javascript-basics .
+   16  cd ~/Documents
+   17  /Users/solomon/Desktop/Javscript-Basics
+   18  cd ~/Documents
+   19  javascript-basics
+   20  is
+   21  cd ~/Documents
+   22  is
+   23  ls
+   24  javascript-basics
+   25  ls
+   26  /Users/solomon/Desktop/Javscript-Basics
+   27  hello
+   28  pwd
+   29  cd documents
+   30  ls
+   31  ls
+   32  ls-a
+   33  ls -a
+   34  cd..
+   35  cd ..
+   36  mkdir myfolder
+   37  ls
+   38  cd ..
+   39  cd
+   40  rm -r myfolder
+   41  ls
+   42  git --version
+   43  mkdir GA-Blog
+   44  ls
+   45  cd GA-Blog
+   46  mkdir .git/
+   47  ls
+   48  ls -a
+   49  git init
+   50  run $git init
+   51  $ git init
+   52  git status
+   53  touch my-first-post.txt
+   54  git status
+   55  git add my-first-post.txt
+   56  git status
+   57  git log
+   58  git commit -m "created a new post.txt file"
+   59  git log
+   60  zsh --version
+   61  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+   62  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"\n
+   63  open ~/.zshrc
+   64  brew v
+   65  brew -v
+   66  ~/.zshrc
+   67  zsh -v
+   68  export PATH=$PATH:"/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+   69  ~/.zshrc
+   70  pwd
+   71  cd ~
+   72  ls
+   73  ls -a
+   74  open .zshrc
+   75  code.
+   76  code
+   77  .code
+   78  brew install node
+   79  node -v
+   80  npm -v
+   81  code .
+   82  cd ~
+   83  ode
+   84  code
+   85  code .
+   86  sudo chown -R $USER /usr/local/lib
+   87  pwd
+   88  cd desktop
+   89  ls
+   90  open .
+   91  open ..
+   92  cd ..
+   93  cd projects
+   94  cd applications
+   95  ls
+   96  open .
+   97  back ..
+   98  ls
+   99  cd ..
+  100  pwd
+  101  ls
+  102  open downloads
+  103  cd library
+  104  open ..
+  105  ls
+  106  cd ..
+  107  cd desktop
+  108  ls
+  109  cd ~
+  110  ls
+  111  cd desktop
+  112  ls
+  113  mkdir New_directory
+  114  ls
+  115  rm New_directory
+  116  ls
+  117  cd New_directory
+  118  ls
+  119  touch index.html
+  120  ls
+  121  rm index.html
+  122  ls
+  123  cd ..
+  124  rm New_directory
+  125  cd New_directory
+  126  rm New_directory
+  127  rm -r New_directory
+  128  cd ..
+  129  rm -r New_directory
+  130  ls
+  131  ~ cd Documents
+  132  cd documents
+  133  ls
+  134  cd ..
+  135  open documents
+  136  ~
+  137  ls
+  138  cd Documents
+  139  mkdir Football
+  140  cd Football
+  141  touch index.html
+  142  ls
+  143  cp index.html Elway-7.html
+  144  ls
+  145  rm Elway-7.html
+  146  ls
+  147  cd ..
+  148  rm -r Footabll
+  149  rm -r Football
+  150  ls
+  151  cd ..
+  152  ~
+  153  ls
+  154  cd
+  155  ls
+  156  pwd
+  157  cd Portfolio
+  158  ls
+  159  cd Public
+  160  cd ..
+  161  cd Portfolio
+  162  ls
+  163  cd ..
+  164  ls
+  165  cd Public
+  166  ls
+  167  cd ..
+  168  ls
+  169  cd ..
+  170  ls
+  171  pwd
+  172  /users/solomon
+  173  ls
+  174  cd Desktop
+  175  ls
+  176  cd ..
+  177  ~
+  178  ls
+  179  ~
+  180  cd documents
+  181  ls
+  182  mkdir Football
+  183  ls
+  184  cd Football
+  185  cd ..
+  186  rm -r Football
+  187  ls
+  188  mkdir house
+  189  cd house
+  190  ls
+  191  touch kitchen.html bedroom.html livingroom.html
+  192  ls
+  193  echo "water chips fruits vegetables" >> kitchen.txt
+  194  ls
+  195  openk kitchen.txt
+  196  open kitchen.txt
+  197  cat kitchen.txt
+  198  cd ..
+  199  rm -r house
+  200  ls
+  201  ~
+  202  telnet towel.blinkenlights.nl
+  203  brew install telnet
+  204  telnet towel.blinkenlights.nl
+  205  brew install telnet
+  206  telnet towel.blinkenlights.nl
+  207  cd documents
+  208  ls
+  209  history
+  210  brew install git
+  211  ~
+  212  cd documents
+  213  mkdir states
+  214  ls
+  215  cd states
+  216  ls
+  217  git init
+  218  touch index.html
+  219  touch README.md
+  220  echo "# All the States" >> README.md
+  221  cat README.md
+  222  git status
+  223  git stats
+  224  git status
+  225  git add README.md
+  226  git status
+  227  git add .
+  228  git status
+  229  git reset
+  230  git status
+  231  git add .
+  232  git status
+  233  git commit -m "[states] Add README and html"
+  234  git log
+  235  cd ..
+  236  ls
+  237  cd desktop
+  238  ls
+  239  cd ..
+  240  ls
+  241  cd desktop
+  242  mkdir General Assembly
+  243  ls
+  244  rm Assembly
+  245  rm -r Assembly
+  246  rm -r General
+  247  ls
+  248  mkdir General_Assembly
+  249  ls
+  250  cd General_Assembly
+  251  ls
+  252  git clone https://github.com/soloab83/command-line-murder-mystery.git
+  253  ls
+  254  cd command-line-murder-mystery
+  255  cat instructions
+  256  ls
+  257  cd mystery
+  258  ls
+  259  open crimescene
+  260  cat hint1
+  261  cd ..
+  262  cat hint1
+  263  cat hint2
+  264  head -n
+  265  head -n 20 people
+  266  cd crime scene
+  267  ls
+  268  cat solution
+  269  cd ..
+  270  cd command-line-murder-mystery
+  271  cat solution
+  272  cat hint1
+  273  head -n 20 people
+  274  head -hint1
+  275  cheatsheet.md
+  276  open cheatsheet.md
+  277  ls
+  278  cd mystery
+  279  ls
+  280  cd interviews
+  281  ls
+  282  cd ..
+  283  ls
+  284  cd memberships
+  285  ls
+  286  cd streets
+  287  ls
+  288  cd ..
+  289  ls
+  290  cd ..
+  291  ls
+  292  open instructions
+  293  cat hint1
+  294  cat hint2
+  295  ls
+  296  cd mystery
+  297  ls
+  298  grep "CLUE" crimescene
+  299  cd ..
+  300  ls
+  301  cat hint3
+  302  head "people"
+  303  cd mystery
+  304  ls
+  305  head people
+  306  cat hint4
+  307  cd ..
+  308  cat hint4
+  309  cd mystery
+  310  grep "Annabel" people
+  311  cd ..
+  312  cat hint5
+  313  cd mystery
+  314  ls
+  315  cd interviews
+  316  ls
+  317  \thead -n 173 streets/Mattapan_Street | tail -n 1
+  318  cd ..
+  319  ls
+  320  cd ..
+  321  ls
+  322  cat hint5
+  323  cat hint6
+  324  cat hint7
+  325  ls
+  326  cd mystery
+  327  ls
+  328  grep -A 5 "L337" mystery/vehicles
+  329  cd ..
+  330  cat hint8
+  331  cat hint1
+  332  cd mystery
+  333  head -n 20 people
+  334  cat hint2
+  335  cd ..
+  336  cat hint2
+  337  cd mystery
+  338  head -n 20 people
+  339  ls
+  340  cd st
+  341  cd streets
+  342  ls
+  343  walton street
+  344  cd ../..
+  345  nano cheatsheet.md
+  346  pwd
+  347  cd
+  348  ls
+  349  cd Documents
+  350  ls
+  351  cd GA-blog
+  352  cd ..
+  353  cd GA-Blog
+  354  ls
+  355  git history
+  356  cd ..
+  357  ls
+  358  cd Desktop
+  359  ls
+  360  cd General_Assembly
+  361  ls
+  362  cd command-line-murder-mystery
+  363  ls
+  364  cat hint1
+  365  head -n 20 people
+  366  cd mystery
+  367  head -n 20 peope
+  368  head -n 20 people
+  369  cd ..
+  370  l
+  371  ls
+  372  open cheatsheet.pdf
+  373  open cheatsheet.md
+  374  ls
+  375  cat hint2
+  376  ls
+  377  cd mystery
+  378  ls
+  379  grep "CLUE" crimescene
+  380  cd ..
+  381  cat hint3
+  382  cat ls
+  383  ls
+  384  cd mys
+  385  cd mystery
+  386  ls
+  387  head -n 20 people
+  388  cd ..
+  389  cat hint3
+  390  cat hint4
+  391  cd mys
+  392  cd mystery
+  393  ls
+  394  grep "Annabel" people
+  395  cd ..
+  396  cat hint5
+  397  cd mystery
+  398  ls
+  399  cd streets
+  400  ls
+  401  head -n 173 streets/Mattapan_Street | tail -n 1
+  402  ls
+  403  cd ..
+  404  cat hint4
+  405  cat hint5
+  406  cd mystery
+  407  ls
+  408  grep "Annabel" people
+  409  head -n 173 streets/Mattapan_Street | tail -n 1
+  410  cd ..
+  411  cat hint6
+  412  cd mystery
+  413  ls
+  414  grep "Honda" vehicles
+  415  cd ..
+  416  cat hint7
+  417  grep -A 5 "L337" mystery/vehicles
+  418  cat hint8
+  419  cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l
+  420  cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+  421  cd mystery
+  422  cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+  423  ls
+  424  cd memberships
+  425  cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith"
+  426  ls
+  427  cd ..
+  428  cd memberships
+  429  cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l
+  430  cd ..
+  431  ls
+  432  cat hint8
+  433  cd mystery
+  434  ls
+  435  cd memberships
+  436  cat Fitness_Galaxy AAA United_MileagePlus | grep -c "John Smith"
+  437  cat Fitness_Galaxy AAA United_MileagePlus | grep "John Smith" | wc -l
+  438  ls
+  439  cd ..
+  440  cat hint7
+  441  grep -A 5 "L337" mystery/vehicles
+  442  cat hint8
+  
+  Killer: Bowers
